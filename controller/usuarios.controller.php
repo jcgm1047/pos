@@ -173,7 +173,6 @@ class ControladorUsuarios
     }
 
 
-
     /* Editar Usuario */
     public function ctrEditarUsuario()
     {
@@ -185,10 +184,9 @@ class ControladorUsuarios
                 /* validar imagen */
                 $ruta = $_POST["fotoActual"];
 
-                if(isset($_FILES["editarFoto"]["tmp_name"]) && !empty($_FILES["editarFoto"]["tmp_name"])){
+                if (isset($_FILES["editarFoto"]["tmp_name"])) {
 
                     list($ancho, $alto) = getimagesize($_FILES["editarFoto"]["tmp_name"]);
-
                     $nuevoAncho = 500;
                     $nuevoAlto = 500;
 
@@ -284,11 +282,11 @@ class ControladorUsuarios
                 $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
 
                 if ($respuesta == "ok") {
-                    echo "<script>
+                   echo "<script>
                     Swal.fire({
                 
                         icon: 'success',
-                        title: 'Usuario editado correctamente',
+                        title: 'Usuario guardado correctamente',
                         showConfirmButton: true,
                         confirmButtonText: 'Cerrar',
                         closeOnConfirm: false,
@@ -303,26 +301,9 @@ class ControladorUsuarios
                     })
                 </script>";
                 }
-            } else {
-                echo "<script>
-                Swal.fire({
-            
-                    icon: 'error',
-                    title: '!El nombre no puede ir vacio o llevar caracteres especiales',
-                    showConfirmButton: true,
-                    confirmButtonText: 'Cerrar',
-                    closeOnConfirm: false,
-            
-                }).then((result) => {
-
-                    if (result.value) {
-            
-                        window.location = 'usuarios'
-            
-                    }
-                })
-            </script>";
             }
         }
     }
 }
+
+
