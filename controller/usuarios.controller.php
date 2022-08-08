@@ -21,25 +21,24 @@ class ControladorUsuarios
 
                 if ($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encriptar) {
 
+                    if ($respuesta["estado"] == 1) {
 
+                        $_SESSION["iniciarSesion"] = "ok";
+                        $_SESSION["id"] = $respuesta["id"];
+                        $_SESSION["nombre"] = $respuesta["nombre"];
+                        $_SESSION["usuario"] = $respuesta["usuario"];
+                        $_SESSION["perfil"] = $respuesta["perfil"];
+                        $_SESSION["foto"] = $respuesta["foto"];
 
-
-                    $_SESSION["iniciarSesion"] = "ok";
-                    $_SESSION["id"] = $respuesta["id"];
-                    $_SESSION["nombre"] = $respuesta["nombre"];
-                    $_SESSION["usuario"] = $respuesta["usuario"];
-                    $_SESSION["perfil"] = $respuesta["perfil"];
-                    $_SESSION["foto"] = $respuesta["foto"];
-
-
-
-
-                    echo '<script> 
+                        echo '<script> 
                     
                     window.location = "inicio";
                     
                     
                     </script>';
+                    } else {
+                        echo   '<br><div class="alert alert-danger">El Usuario se encuentra desactivado </div>';
+                    }
                 } else {
                     echo   '<br><div class="alert alert-danger">Error al ingresar, intentalo de nuevo</div>';
                 }
@@ -184,7 +183,7 @@ class ControladorUsuarios
                 /* validar imagen */
                 $ruta = $_POST["fotoActual"];
 
-                if (isset($_FILES["editarFoto"]["tmp_name"])&& !empty($_FILES["editarFoto"]["tmp_name"])) {
+                if (isset($_FILES["editarFoto"]["tmp_name"]) && !empty($_FILES["editarFoto"]["tmp_name"])) {
 
                     list($ancho, $alto) = getimagesize($_FILES["editarFoto"]["tmp_name"]);
                     $nuevoAncho = 500;
@@ -282,7 +281,7 @@ class ControladorUsuarios
                 $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
 
                 if ($respuesta == "ok") {
-                   echo "<script>
+                    echo "<script>
                     Swal.fire({
                 
                         icon: 'success',
@@ -305,5 +304,3 @@ class ControladorUsuarios
         }
     }
 }
-
-

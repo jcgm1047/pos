@@ -16,7 +16,18 @@ class AjaxUsuarios
 
         echo json_encode($respuesta);
     }
+    /* Activar Usuario */
+public $activarUsuario;
+public $activarid;
+
+
 }
+
+
+
+
+
+
 
 /* Editar usuario */
 if (isset($_POST["idUsuario"])) {

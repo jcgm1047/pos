@@ -54,7 +54,7 @@
 
 
             foreach ($usuarios as $key => $value) {
-              
+
 
               echo '
               <tr>
@@ -68,11 +68,21 @@
                 echo '<td><img src="view\img\Nueva carpeta\usuarios\default\anonymous.png" class="img-thumbnail" width="40px"></td>';
               }
               echo
-              '<td>' . $value["perfil"] . '</td>
-                <td><button class="btn btn-success btn-xs">Activado</button></td>
-                <td>' . $value["ultimo_login"] . '</td>
-                <td>
+              '<td>' . $value["perfil"] . '</td>';
 
+              if ($value["estado"] != 0) {
+
+                echo '<td><button class="btn btn-success btn-xs btnAvtivar" idUsuario = "'. $value['id'] .'" estadoUsuario = "0" >Activado</button></td>';
+
+              } else {
+
+                echo '<td><button class="btn btn-danger btn-xs btnAvtivar" idUsuario = "'. $value['id'] .'" estadoUsuario = "1" >Desactivado</button></td>';
+
+              }
+
+              echo '<td>' . $value["ultimo_login"] . '</td>
+                
+              <td>
                 <div class="btn-group">
                 <button class="btn btn-warning btnEditarUsuario" idUsuario ="' . $value['id'] . '" data-toggle="modal" data-target="#modalEditarUsuario"> <i class="fa fa-pencil"></i> </button>
                 <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
@@ -284,7 +294,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
 
-                <input type="text" class="form-control input-lg"  name="editarPassword" placeholder="Escriba la nueva Contraseña">
+                <input type="text" class="form-control input-lg" name="editarPassword" placeholder="Escriba la nueva Contraseña">
                 <input type="hidden" id="passwordActual" name="passwordActual">
 
               </div>
@@ -343,7 +353,7 @@
         <?php
 
         $editarUsuario = new ControladorUsuarios();
-        $editarUsuario-> ctrEditarUsuario(); 
+        $editarUsuario->ctrEditarUsuario();
 
 
 
