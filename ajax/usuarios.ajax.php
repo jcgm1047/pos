@@ -5,42 +5,61 @@ require_once "../model/usuarios.model.php";
 class AjaxUsuarios
 {
 
-    /* Editar usuario */
+    /* --------------Inicio editar Usuario---------------- */
 
     public $idUsuario;
     public function ajaxEditarUsuario()
     {
-        echo "<script>console.log('hola')</script>";
         $item = "id";
         $valor = $this->idUsuario;
         $respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 
         echo json_encode($respuesta);
     }
-    /* Activar Usuario */
+    /* --------------Fin editar Usuario---------------- */
+
+
+
+    /* --------------Inicio Activar Usuario Usuario---------------- */
     public $activarUsuario;
     public $activarId;
-
 
     public function ajaxActivarUsuario()
     {
 
-      
         $tabla = "usuarios";
-        
+
         $item1 = "estado";
         $valor1 = $this->activarUsuario;
-        
+
         $item2 = "id";
         $valor2 = $this->activarId;
 
         $respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
     }
+    /* --------------Inicio Validacion Usuario ---------------- */
+
+    public $validarUsuario;
+
+    public function ajaxValidarUsuario()
+    {
+        $item = "usuario";
+        $valor = $this->validarUsuario;
+
+        $respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+        echo json_encode($respuesta);
+    }
+
+
+
+
+    /* --------------Fin Validacion Usuario---------------- */
 }
 
 
 
-/* Editar usuario */
+/* Objeto Editar usuario */
 
 if (isset($_POST["idUsuario"])) {
     $editar = new  AjaxUsuarios();
@@ -49,7 +68,7 @@ if (isset($_POST["idUsuario"])) {
 }
 
 
-/* activar usuario */
+/* Objeto Activar usuario */
 
 if (isset($_POST["activarUsuario"])) {
 
@@ -57,4 +76,13 @@ if (isset($_POST["activarUsuario"])) {
     $activarUsuario->activarUsuario = $_POST["activarUsuario"];
     $activarUsuario->activarId = $_POST["activarId"];
     $activarUsuario->ajaxActivarUsuario();
+}
+
+/* Objeto validar usuario */
+
+if (isset($_POST["validarUsuario"])) {
+
+    $valUsuario = new AjaxUsuarios();
+    $valUsuario->validarUsuario = $_POST["validarUsuario"];
+    $valUsuario->ajaxValidarUsuario();
 }

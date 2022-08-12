@@ -142,14 +142,14 @@
               </div>
 
             </div>
-            <!-- Usuario -->
+            <!-- Nuevo Usuario -->
             <div class="form-group">
 
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key" style="width: 10px;"></i></span>
 
-                <input class="form-control input-lg" type="text" name="nuevoUsuario" placeholder="Ingresar Usuario" required>
+                <input class="form-control input-lg" type="text" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingresar Usuario" required>
 
               </div>
 

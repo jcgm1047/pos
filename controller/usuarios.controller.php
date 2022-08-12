@@ -30,12 +30,32 @@ class ControladorUsuarios
                         $_SESSION["perfil"] = $respuesta["perfil"];
                         $_SESSION["foto"] = $respuesta["foto"];
 
-                        echo '<script> 
+                        /* Registrar Fecha del ultimo login */
+
+                        date_default_timezone_set('America/Bogota');
+                        $fecha = date('y-m-d');
+                        $hora = date('H:i:s');
+
+                        $fechaActual = $fecha . ' ' . $hora;
+
+                        $item1 = 'ultimo_login';
+                        $valor1 = $fechaActual;
+
+                        $item2 = 'id';
+                        $valor2 = $respuesta["id"];
+
+                        $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+
+                        if ($ultimoLogin == 'ok') {
+                            echo '<script> 
                     
-                    window.location = "inicio";
+                            
+                                  window.location = "inicio";
                     
                     
-                    </script>';
+                                           </script>';
+
+                        }
                     } else {
                         echo   '<br><div class="alert alert-danger">El Usuario se encuentra desactivado </div>';
                     }
