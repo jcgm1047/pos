@@ -96,6 +96,7 @@
 
   <div class="modal-dialog">
 
+
     <div class="modal-content">
 
       <form role="form" method="post">
@@ -114,7 +115,7 @@
 
           <div class="box-body">
 
-            <!-- Nombre Categoria -->
+            <!-- Nombre -->
             <div class="form-group">
 
               <div class="input-group">
@@ -139,11 +140,6 @@
 
         </div>
 
-        <?php 
-        $crearCategoria = new ControladorCategorias();
-        $crearCategoria ->  ctrCrearCategoria();
-
-        ?>
       </form>
 
     </div>

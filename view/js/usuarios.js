@@ -49,9 +49,9 @@ $(".nuevaFoto").change(function() {
 
 })
 
-/* Editar usuario */
+/*========== Editar usuario ==========*/
 
-$(".btnEditarUsuario").click(function() {
+$(document).on("click", ".btnEditarUsuario", function() {
     var idUsuario = $(this).attr("idUsuario");
 
     var datos = new FormData();
@@ -83,9 +83,9 @@ $(".btnEditarUsuario").click(function() {
     });
 });
 
-/* Activar Usuario*/
 
 
+/*========== Activar Usuario ==========*/
 
 $(document).on("click", ".btnActivar", function() {
 
@@ -146,7 +146,9 @@ $(document).on("click", ".btnActivar", function() {
 
 })
 
+
 /*========== revisar si el usuario ya esta registrado ==========*/
+/* *PEDINETE  */
 
 $("#nuevoUsuario").change(function() {
 
@@ -171,7 +173,7 @@ $("#nuevoUsuario").change(function() {
 
             if (respuesta) {
 
-                $("#nuevoUsuario").parent().after('<div class="alert alert-warning">Este usuario ya existe</div>');
+                $("#nuevoUsuario").parent()('<div class="alert alert-warning">Este usuario ya existe</div>');
 
                 $("#nuevoUsuario").val("");
 
@@ -181,4 +183,37 @@ $("#nuevoUsuario").change(function() {
         }
 
     })
+})
+
+
+/*========== Eliminar usuario ==========*/
+$(document).on("click", ".btnEliminarusuario", function() {
+
+    var idUsuario = $(this).attr("idUsuario");
+    var fotoUsuario = $(this).attr("fotoUsuario");
+    var usuario = $(this).attr("usuario");
+
+    swal.fire({
+
+        title: 'Estas seguro de borrar el usuario?',
+        text: "Si no lo está puede cancelar la accion",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Nooo, Espera!',
+        confirmButtonText: 'Si, Borralo!'
+    }).then((result) => {
+        if (result.value) {
+
+            window.location = 'index.php?ruta=usuarios&idUsuario=' + idUsuario + '&fotoUsuario=' + fotoUsuario + '&usuario=' + usuario;
+
+
+        }
+    })
+
+
+
+
+
 })

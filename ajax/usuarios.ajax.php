@@ -51,9 +51,6 @@ class AjaxUsuarios
         echo json_encode($respuesta);
     }
 
-
-
-
     /* --------------Fin Validacion Usuario---------------- */
 }
 

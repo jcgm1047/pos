@@ -83,10 +83,26 @@ class ModeloUsuarios
     {
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
 
-        $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-        $stmt->bindParam(":".$item2, $valor2, PDO::PARAM_STR);
-        
-       
+        $stmt->bindParam(":" . $item1, $valor1, PDO::PARAM_STR);
+        $stmt->bindParam(":" . $item2, $valor2, PDO::PARAM_STR);
+
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt = closelog();
+        $stmt = null;
+    }
+    /* Borrar Usuario */
+    static public function mdlBorrarusuarios($tabla, $datos)
+    {
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt->bindParam(":id", $datos, PDO::PARAM_STR);
+
+
+
         if ($stmt->execute()) {
             return "ok";
         } else {

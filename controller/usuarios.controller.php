@@ -1,7 +1,7 @@
 <?php
 class ControladorUsuarios
 {
-
+    /* ingreso usuario */
     static public function ctrIngresoUsuario()
     {
 
@@ -54,7 +54,6 @@ class ControladorUsuarios
                     
                     
                                            </script>';
-
                         }
                     } else {
                         echo   '<br><div class="alert alert-danger">El Usuario se encuentra desactivado </div>';
@@ -193,7 +192,7 @@ class ControladorUsuarios
 
 
     /* Editar Usuario */
-    public function ctrEditarUsuario()
+    static public function ctrEditarUsuario()
     {
 
         if (isset($_POST["editarUsuario"])) {
@@ -320,6 +319,50 @@ class ControladorUsuarios
                     })
                 </script>";
                 }
+            }
+        }
+    }
+
+
+    /* Eliminar Usuario */
+
+    static public function ctrBorrarUsuario()
+    {
+
+        if (isset($_GET["idUsuario"])) {
+
+            $tabla = "usuarios";
+            $datos = $_GET["idUsuario"];
+
+            if ($_GET["fotoUsuario"] != "") {
+
+                unlink($_GET["fotoUsuario"]);
+                rmdir('view/img/usuario' . $_GET["usuario"]);
+            }
+
+            $respuesta = ModeloUsuarios::mdlBorrarusuarios($tabla, $datos);
+
+            if ($respuesta == "ok") {
+
+
+                echo "<script>
+                Swal.fire({
+            
+                    icon: 'success',
+                    title: 'El usuario a sido eliminado correctamente',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Cerrar',
+                    closeOnConfirm: false,
+            
+                }).then((result) => {
+
+                    if (result.value) {
+            
+                        window.location = 'usuarios'
+            
+                    }
+                })
+            </script>";
             }
         }
     }
