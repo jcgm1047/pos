@@ -38,44 +38,39 @@
 
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>EQUIPOS ELECTROMECÁNICOS</td>
-              <td>
 
-                <div class="btn-group">
-                  <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
-                  <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
-                </div>
-              </td>
+            <?php
+              
+              $item =  null;
+              $valor = null;
 
-            </tr>
+              $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
-            <tr>
-              <td>1</td>
-              <td>EQUIPOS ELECTROMECÁNICOS</td>
-              <td>
+              foreach ($categorias as $key => $value) {
+              
 
-                <div class="btn-group">
-                  <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
-                  <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
-                </div>
-              </td>
+                echo 
+                
+                '<tr>
+                <td>'.($key+1).'</td>
+                <td class = "text-uppercase" ">'.$value ["categoria"].'</td>
+               
+                <td>
+  
+                  <div class="btn-group">
+                    <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
+                    <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                  </div>
+                </td>
+  
+              </tr>';
 
-            </tr>
+              }
 
-            <tr>
-              <td>1</td>
-              <td>EQUIPOS ELECTROMECÁNICOS</td>
-              <td>
 
-                <div class="btn-group">
-                  <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
-                  <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
-                </div>
-              </td>
-
-            </tr>
+              
+              
+              ?>
 
           </tbody>
 
@@ -139,9 +134,9 @@
 
         </div>
 
-        <?php 
+        <?php
         $crearCategoria = new ControladorCategorias();
-        $crearCategoria ->  ctrCrearCategoria();
+        $crearCategoria->ctrCrearCategoria();
 
         ?>
       </form>

@@ -1,7 +1,7 @@
 <?php
 class ControladorCategorias
 {
-
+    /* Crear Categoria */
     static public function ctrCrearCategoria()
     {
 
@@ -22,10 +22,16 @@ class ControladorCategorias
                     
                     Swal.fire({
                         icon: 'success',
-                        title: 'Categoria Guardada',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
+                        title: 'La categoría ha sido guardada correctamente',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar'
+                    }).then(function(result){
+                        if (result.value) {
+
+                        window.location = 'categorias';
+
+                        }
+                    })
                     
                     </script>";
                 }
@@ -51,5 +57,14 @@ class ControladorCategorias
             </script>";
             }
         }
+    }
+    /* Mostrar Categorias */
+    static public function ctrMostrarCategorias($item, $valor)
+    {
+
+        $tabla = "categorias";
+        $respuesta = ModeloCategoria::mdlMostrarCategoria($tabla, $item, $valor);
+
+        return $respuesta;
     }
 }
