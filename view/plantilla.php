@@ -115,6 +115,7 @@ session_start();
 
   <script src="view/js/plantilla.js"></script>
   <script src="view/js/usuarios.js"></script>
+  <script src="view/js/categorias.js"></script>
 </body>
 
 
