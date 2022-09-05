@@ -4,12 +4,7 @@ require_once "../model/categoria.model.php";
 
 class AjaxCategorias
 {
-
-
     /* Editar Categorias */
-
-
-
     public $idCategoria;
     public function ajaxEditarCategoria()
     {
@@ -21,10 +16,10 @@ class AjaxCategorias
 
         echo json_encode($respuesta);
     }
+
 }
 
 /*Editar Categoria  */
-
 if (isset($_POST["idCategoria"])) {
 
     $categoria = new AjaxCategorias();

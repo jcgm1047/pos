@@ -22,6 +22,7 @@ class ModeloCategoria
         $stmt = closelog();
         $stmt = null;
     }
+
     /* mostrar categorias */
     static public function mdlMostrarCategoria($tabla, $item, $valor)
     {
@@ -39,8 +40,8 @@ class ModeloCategoria
         $stmt = closelog();
         $stmt = null;
     }
-    /* Editar Categorias */
 
+    /* Editar Categorias */
     static public function mdlEditarCategoria($tabla, $datos)
     {
 
@@ -61,4 +62,22 @@ class ModeloCategoria
         $stmt = null;
     }
 
+    /* Eliminar Categoria */
+    static public function mdlBorrarCategoria($tabla, $datos)
+    {
+
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt->bindParam(":id", $datos, PDO::PARAM_STR);
+
+
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt = closelog();
+        $stmt = null;
+
+    }
 }

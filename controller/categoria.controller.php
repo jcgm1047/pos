@@ -58,6 +58,7 @@ class ControladorCategorias
             }
         }
     }
+    
     /* Mostrar Categorias */
     static public function ctrMostrarCategorias($item, $valor)
     {
@@ -67,6 +68,7 @@ class ControladorCategorias
 
         return $respuesta;
     }
+
     /* Editar Categoria  */
     static public function ctrEditarCategoria()
     {
@@ -124,6 +126,39 @@ class ControladorCategorias
                 }
             })
         </script>";
+            }
+        }
+    }
+
+    /* Eliminar Categoria */
+    static public function ctrBorrarCategoria()
+    {
+        if (isset($_GET["idCategoria"])) {
+            
+            $tabla = "Categorias";
+            $datos = $_GET["idCategoria"];
+
+            $respuesta = ModeloCategoria::mdlBorrarCategoria($tabla, $datos);
+
+            if ($respuesta == "ok") {
+                
+                echo "<script>
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'La categoría ha sido eliminada correctamente',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Cerrar'
+                }).then(function(result){
+                    if (result.value) {
+
+                    window.location = 'categorias';
+
+                    }
+                })
+                
+                </script>";
+
             }
         }
     }

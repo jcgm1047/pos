@@ -25,6 +25,32 @@ $(".btnEditarCategoria").click(function() {
         }
     });
 
+})
 
+/* Eliminar Categoria */
+
+$(".btnEliminarCategoria").click(function() {
+
+    var idCategoria = $(this).attr("idCategoria");
+
+    swal.fire({
+
+        title: 'Estas seguro de borrar esta categoria?',
+        text: "Si no lo está puede cancelar la accion",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Nooo, Espera!',
+        confirmButtonText: 'Si, borrala!'
+
+    }).then((result) => {
+        if (result.value) {
+
+            window.location = 'index.php?ruta=categorias&idCategoria=' + idCategoria;
+
+
+        }
+    })
 
 })

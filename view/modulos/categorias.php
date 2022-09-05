@@ -55,15 +55,14 @@
                 <td>' . ($key + 1) . '</td>
                 <td class = "text-uppercase" ">' . $value["categoria"] . '</td>
                
-                <td>
-  
-                  <div class="btn-group">
-                    <button class="btn btn-warning btnEditarCategoria" idCategoria="' . $value["id"] . '" data-toggle = "modal" data-target="#modalEditarCategoria"> <i class="fa fa-pencil"></i> </button>
+                  <td>
+    
+                    <div class="btn-group">
+                      <button class="btn btn-warning btnEditarCategoria" idCategoria="' . $value["id"] . '" data-toggle = "modal" data-target="#modalEditarCategoria"> <i class="fa fa-pencil"></i> </button>
 
-
-                    <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
-                  </div>
-                </td>
+                      <button class="btn btn-danger btnEliminarCategoria" idCategoria="' . $value["id"] . '"> <i class="fa fa-times"></i> </button>
+                    </div>
+                  </td>
   
               </tr>';
             }
@@ -182,7 +181,7 @@
                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
 
                 <input class="form-control input-lg" type="text" name="editarCategoria" id="editarCategoria" required>
-                <input  type="hidden" name="idCategoria" id="idCategoria" required>
+                <input type="hidden" name="idCategoria" id="idCategoria" required>
 
               </div>
 
@@ -213,3 +212,9 @@
   </div>
 
 </div>
+
+<?php
+$borrarCategoria = new ControladorCategorias();
+$borrarCategoria->ctrBorrarCategoria();
+
+?>
