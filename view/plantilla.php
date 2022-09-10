@@ -19,7 +19,7 @@ session_start();
   <!-- ========== Start Plugins CSS ========== -->
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="view/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
+    <!-- Font Awesome -->
   <link rel="stylesheet" href="view/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="view/bower_components/Ionicons/css/ionicons.min.css">
@@ -31,6 +31,8 @@ session_start();
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <!-- DataTables -->
   <link rel="stylesheet" href="view/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="view/plugins/iCheck/all.css">
   <!-- ========== End Plugins CSS ========== -->
 
   <!-- ========== Start plugins JS ========== -->
@@ -48,6 +50,8 @@ session_start();
   <script src="view/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
   <!-- sweet alert 2 -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- iCheck 1.0.1 -->
+  <script src="view/plugins/iCheck/icheck.min.js"></script>
 
   <!-- ========== End plugins JS ========== -->
 
@@ -116,6 +120,7 @@ session_start();
   <script src="view/js/plantilla.js"></script>
   <script src="view/js/usuarios.js"></script>
   <script src="view/js/categorias.js"></script>
+
 </body>
 
 

@@ -2,9 +2,8 @@
 $('.sidebar-menu').tree()
     /*<!-- ========== End sidebar ========== -->*/
 
+
 /*<!-- ========== Start Data table ========== -->*/
-
-
 $(".tablas").DataTable({
     "language": {
         "processing": "Procesando...",
@@ -250,6 +249,14 @@ $(".tablas").DataTable({
         }
     }
 });
-
-
 /*<!-- ========== End Data table ========== -->*/
+
+
+/*<!-- ========== Start iCheck for checkbox and radio inputs ========== -->*/
+//iCheck for checkbox and radio inputs
+$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+    checkboxClass: 'icheckbox_minimal-blue',
+    radioClass: 'iradio_minimal-blue'
+})
+
+/*<!-- ========== End iCheck for checkbox and radio inputs ========== -->*/

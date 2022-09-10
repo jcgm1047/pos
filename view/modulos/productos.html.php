@@ -44,51 +44,68 @@
             </tr>
 
           </thead>
-
           <tbody>
+            <tr>
+              <td>1</td>
+              <td><img src="view\img\Nueva carpeta\usuarios\default\anonymous.png" class="img-thumbnail" width="40px"></td>
+              <td>0001</td>
+              <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum dignissimos a perferendis quibusdam? </td>
+              <td>Lorem ipsum</td>
+              <td>20</td>
+              <td>$20</td>
+              <td>$10</td>
+              <td>2022-15-11 15:05:02</td>
+              <td>
 
-            <?php
+                <div class="btn-group">
+                  <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
+                  <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                </div>
+              </td>
 
-            $item = null;
-            $valor = null;
+            </tr>
 
-            $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
+            <tr>
+              <td>1</td>
+              <td><img src="view\img\Nueva carpeta\usuarios\default\anonymous.png" class="img-thumbnail" width="40px"></td>
+              <td>0001</td>
+              <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum dignissimos a perferendis quibusdam? </td>
+              <td>Lorem ipsum</td>
+              <td>20</td>
+              <td>$20</td>
+              <td>$10</td>
+              <td>2022-15-11 15:05:02</td>
+              <td>
 
-            foreach ($productos as $key => $value) {
+                <div class="btn-group">
+                  <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
+                  <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                </div>
+              </td>
 
-              echo '
+            </tr>
 
-             <tr>
-                    <td>' . ($key + 1) . '</td>
-                    <td><img src="view\img\Nueva carpeta\usuarios\default\anonymous.png" class="img-thumbnail" width="40px"></td>
-                    <td>' . ($value["codigo"]) . '</td>
-                    <td>' . ($value["descripcion"]) . '</td>';
+            <tr>
+              <td>1</td>
+              <td><img src="view\img\Nueva carpeta\usuarios\default\anonymous.png" class="img-thumbnail" width="40px"></td>
+              <td>0001</td>
+              <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum dignissimos a perferendis quibusdam? </td>
+              <td>Lorem ipsum</td>
+              <td>20</td>
+              <td>$20</td>
+              <td>$10</td>
+              <td>2022-15-11 15:05:02</td>
+              <td>
 
-              $item = "id";
-              $valor = $value["id_categoria"];
+                <div class="btn-group">
+                  <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
+                  <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                </div>
+              </td>
 
-              $categoria = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+            </tr>
 
-              echo '
 
-                    <td>' . $categoria["categoria"] . '</td>
-                    <td>' . ($value["stock"]) . '</td>
-                    <td>' . ($value["precio_compra"]) . '</td>
-                    <td>' . ($value["precio_venta"]) . '</td>
-                    <td>' . ($value["fecha"]) . '</td>
-                  <td>
-
-                      <div class="btn-group">
-                          <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
-                          <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
-                      </div>
-
-                  </td>
-
-              </tr>';
-            }
-
-            ?>
 
           </tbody>
 
@@ -236,6 +253,9 @@
                     <span class="input-group-addon"> <i class="fa fa-percent"></i></span>
 
                   </div>
+
+
+
 
 
                 </div>
