@@ -12,6 +12,7 @@
     }
 }) */
 
+
 $('.tablaProductos').DataTable({
     ajax: 'ajax/datatable-productos.ajax.php',
     " deferRender ": true,
@@ -45,3 +46,84 @@ $('.tablaProductos').DataTable({
     }
 
 });
+
+/* Captura la Categoria para asignar codigo */
+
+$("#nuevoCategoria").change(function() {
+
+    var idCategoria = $(this).val();
+
+    var datos = new FormData();
+    datos.append("idCategoria", idCategoria);
+
+    $.ajax({
+
+        url: "ajax/productos.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+
+            if (!respuesta) {
+
+                var nuevoCodigo = idCategoria + "01";
+                $("#nuevoCodigo").val(nuevoCodigo);
+
+            } else {
+                var nuevoCodigo = Number(respuesta["codigo"]) + 1;
+                $("#nuevoCodigo").val(nuevoCodigo);
+            }
+
+
+        }
+    });
+
+});
+
+/* Agregando precio de venta */
+
+$("#nuevoPrecioCompra").change(function() {
+
+        if ($(".porcentaje").prop("checked")) {
+
+            var valorPorcentaje = $(".nuevoPorcentaje").val();
+
+
+            var porcentaje = Number(($("#nuevoPrecioCompra").val() * valorPorcentaje / 100)) + Number($("#nuevoPrecioCompra").val());
+
+            $("#nuevoPrecioVenta").val(porcentaje);
+            $("#nuevoPrecioVenta").prop("readonly", true);
+
+
+
+        }
+
+    })
+    /* Cambio de porcentaje */
+$(".nuevoPorcentaje").change(function() {
+
+    if ($(".porcentaje").prop("checked")) {
+
+        var valorPorcentaje = $(".nuevoPorcentaje").val();
+
+
+        var porcentaje = Number(($("#nuevoPrecioCompra").val() * valorPorcentaje / 100)) + Number($("#nuevoPrecioCompra").val());
+
+        $("#nuevoPrecioVenta").val(porcentaje);
+        $("#nuevoPrecioVenta").prop("readonly", true);
+
+    }
+
+})
+
+$(".porcentaje").on("ifUnchecked", function() {
+
+    $("#nuevoPrecioVenta").prop("readonly", false);
+})
+
+$(".porcentaje").on("ifChecked", function() {
+    $("#nuevoPrecioVenta").prop("readonly", true);
+})

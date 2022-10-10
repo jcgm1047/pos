@@ -3,7 +3,7 @@ require_once "conexion.php";
 
 class ModeloCategoria
 {
-    /* ingresar Categorias */
+    /* Ingresar Categorias */
     static public function mdlIngresarCategoria($tabla, $datos)
     {
 
@@ -23,7 +23,7 @@ class ModeloCategoria
         $stmt = null;
     }
 
-    /* mostrar categorias */
+    /* Mostrar categorias */
     static public function mdlMostrarCategoria($tabla, $item, $valor)
     {
         if ($item != null) {

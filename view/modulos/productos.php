@@ -83,6 +83,38 @@
 
           <div class="box-body">
 
+            <!-- Seleccionar Categoria -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+
+                <select class="form-control input-lg" name="nuevoCategoria" id="nuevoCategoria" required>
+
+                  <option value="">Seleccionar Categoria</option>
+
+                  <?php
+
+                  $item = null;
+                  $valor = null;
+
+
+                  $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                  foreach ($categorias as $key => $value) {
+
+                    echo '<option value="' . $value["id"] . '">' . $value["categoria"] . '</option>';
+                  }
+
+                  ?>
+                </select>
+
+              </div>
+
+            </div>
+
             <!-- Codigo -->
             <div class="form-group">
 
@@ -90,7 +122,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-code"></i></span>
 
-                <input class="form-control input-lg" type="text" name="nuevoCodigo" id="nuevoCodigo" placeholder="Ingresar Codigo" required>
+                <input class="form-control input-lg" type="text" name="nuevoCodigo" id="nuevoCodigo" placeholder="Ingresar Codigo" readonly required>
 
               </div>
 
@@ -108,26 +140,7 @@
 
             </div>
 
-            <!-- Seleccionar Categoria -->
 
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                <select class="form-control input-lg" name="nuevoCategoria" id="nuevoCategoria">
-
-                  <option value="">Seleccionar Categoria</option>
-                  <option value="Taladros">Taladros</option>
-                  <option value="Andamios">Andamios</option>
-                  <option value="Equipos para construccion">Equipos para construccion</option>
-
-                </select>
-
-              </div>
-
-            </div>
 
             <!-- Stock -->
             <div class="form-group">
@@ -224,6 +237,13 @@
         </div>
 
       </form>
+      <?php
+      $crearProducto = new ControladorProductos();
+      $crearProducto->ctrCrearproducto();
+
+
+      ?>
+
 
     </div>
 
