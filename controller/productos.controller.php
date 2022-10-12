@@ -22,10 +22,60 @@ class ControladorProductos
 
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"]) &&
                 preg_match('/^[0-9]+$/', $_POST["nuevoStock"]) &&
-                preg_match('/^[0-9]+$/', $_POST["nuevoPrecioCompra"]) &&
-                preg_match('/^[0-9]+$/', $_POST["nuevoPrecioVenta"])
+                preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioCompra"]) &&
+                preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioVenta"])
             ) {
+
+                /* Validar la imagen */
                 $ruta = "view/img/productos/default/anonymous.png";
+
+                if (isset($_FILES["nuevaImagen"]["tmp_name"])) {
+
+                    list($ancho, $alto) = getimagesize($_FILES["nuevaImagen"]["tmp_name"]);
+                    $nuevoAncho = 500;
+                    $nuevoAlto = 500;
+
+                    /* creacion directorio donde se guardan las fotos de los usuarios  */
+
+                    $directorio = "view/img/productos/nuevo _producto" . $_POST["nuevoCodigo"];
+                    mkdir($directorio, 0755);
+
+                    if ($_FILES["nuevaImagen"]["type"] == "image/jpeg") {
+
+
+                        $aleatorio = mt_rand(100, 999);
+
+                        $ruta = "view/img/productos/nuevo _producto" . $_POST["nuevoCodigo"] . "/" . $aleatorio . ".jpg";
+
+                        $origen = imagecreatefromjpeg($_FILES["nuevaImagen"]["tmp_name"]);
+
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+                        imagejpeg($destino, $ruta);
+                    }
+                    if ($_FILES["nuevaImagen"]["type"] == "image/png") {
+
+                        /*======
+                        GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+                        ===*/
+                        $aleatorio = mt_rand(100, 999);
+
+                        $ruta = "view/img/productos/nuevo _producto" . $_POST["nuevoCodigo"] . "/" . $aleatorio . ".png";
+
+                        $origen = imagecreatefrompng($_FILES["nuevaImagen"]["tmp_name"]);
+
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+                        imagepng($destino, $ruta);
+                    }
+                }
+
+
+
                 $tabla = "productos";
                 $datos = array("id_categoria" => $_POST["nuevoCategoria"],
                                "codigo" => $_POST["nuevoCodigo"],
@@ -36,7 +86,7 @@ class ControladorProductos
                                "imagen" => $ruta);
 
                 $respuesta = ModeloProducto::mdlIngresarProdcuto($tabla, $datos);
-/* var_dump($respuesta); */
+
                 if ($respuesta == "ok") {
                     echo "<script>
                     

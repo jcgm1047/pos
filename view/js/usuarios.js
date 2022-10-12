@@ -1,7 +1,10 @@
+/* Subiendo la foto del usuario */
+
 $(".nuevaFoto").change(function() {
 
     var imagen = this.files[0];
 
+    /* validamos el formato de la imagen */
 
 
     if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {

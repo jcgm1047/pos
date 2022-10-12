@@ -58,7 +58,7 @@
 </div>
 
 
-<!-- Modal agregar Producto -->
+<!-- MODAL AGREGAR PRODUCTO -->
 
 <div id="modalAgregarProducto" class="modal fade" role="dialog">
 
@@ -149,7 +149,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-check"></i></span>
 
-                <input class="form-control input-lg" type="number" name="nuevoStock" id="nuevoStock" min="0" placeholder="Stock" required>
+                <input class="form-control input-lg" type="number" step="any" name="nuevoStock" id="nuevoStock" min="0" placeholder="Stock" required>
 
               </div>
 
@@ -158,20 +158,20 @@
             <!-- Precio Compra -->
             <div class="form-group row">
 
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
 
                 <div class="input-group">
 
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
 
-                  <input class="form-control input-lg" type="number" name="nuevoPrecioCompra" id="nuevoPrecioCompra" min="0" placeholder="Precio de compra" required>
+                  <input class="form-control input-lg" type="number" step="any" name="nuevoPrecioCompra" id="nuevoPrecioCompra" min="0" placeholder="Precio de compra" required>
 
                 </div>
 
               </div>
 
               <!-- Precio Venta -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
 
                 <div class="input-group">
 
@@ -218,9 +218,9 @@
 
               <div class="panel">Cargar Imagen</div>
 
-              <input type="file" name="nuevaImagen" id="nuevaImagen">
+              <input type="file" name="nuevaImagen" class="nuevaImagen">
               <p class="help-block">Peso maximo de la Imagen 2MB</p>
-              <img src="view\img\Nueva carpeta\usuarios\default\anonymous.png" alt="" class="img-thumbnail" width="100px">
+              <img src="view\img\Nueva carpeta\usuarios\default\anonymous.png" alt="" class="img-thumbnail previsualizar" width="100px">
 
             </div>
 
@@ -243,6 +243,184 @@
 
 
       ?>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- MODAL EDITAR PRODUCTO -->
+
+<div id="modalEditarProducto" class="modal fade" role="dialog">
+
+  <div class="modal-dialog">
+
+
+    <div class="modal-content">
+
+      <form role="form" method="post" enctype="multipart/form-data">
+
+        <!-- Modal Header-->
+        <div class="modal-header" style="background: #3c8dbc ; color:white;">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Editar Producto</h4>
+
+        </div>
+
+        <!-- Modal Body -->
+
+        <div class="modal-body">
+
+          <div class="box-body">
+
+            <!-- Editar Categoria -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+
+                <select class="form-control input-lg" name="editarCategoria" readonly required>
+
+                  <option id="editarCategoria"></option>
+
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <!-- Editar Codigo -->
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-code"></i></span>
+
+                <input class="form-control input-lg" type="text" name="editarCodigo" id="editarCodigo" readonly required>
+
+              </div>
+
+            </div>
+            <!-- Editar Descripcion -->
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
+
+                <input class="form-control input-lg" type="text" name="editarDescripcion" id="editarDescripcion" required>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Editar Stock -->
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-check"></i></span>
+
+                <input class="form-control input-lg" type="number" step="any" name="editarStock" id="editarStock" min="0" required>
+
+              </div>
+
+            </div>
+
+            <!-- Precio Compra -->
+            <div class="form-group row">
+
+              <div class="col-xs-12 col-sm-6">
+
+                <div class="input-group">
+
+                  <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
+
+                  <input class="form-control input-lg" type="number" step="any" name="editarPrecioCompra" id="editarPrecioCompra" min="0" required>
+
+                </div>
+
+              </div>
+
+              <!-- Precio Venta -->
+              <div class="col-xs-12 col-sm-6">
+
+                <div class="input-group">
+
+                  <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
+
+                  <input class="form-control input-lg" type="number" name="editarPrecioVenta" id="editarPrecioVenta" min="0" required>
+
+                </div>
+
+                <br>
+                <!-- Checkbox para porcentaje -->
+                <div class="col-xs-6">
+
+                  <div class="form-group">
+
+                    <label><input type="checkbox" class="minimal porcentaje" checked> Utilizar Porcentaje</label>
+
+                  </div>
+
+                </div>
+
+                <!-- Entrada para porcentaje -->
+
+                <div class="col-xs-6" style="padding:0">
+
+                  <div class="input-group">
+
+                    <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
+
+                    <span class="input-group-addon"> <i class="fa fa-percent"></i></span>
+
+                  </div>
+
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+            <!-- Cargar foto -->
+            <div class="form-group">
+
+              <div class="panel">Cargar Imagen</div>
+
+              <input type="file" name="editarImagen" class="nuevaImagen">
+              <p class="help-block">Peso maximo de la Imagen 2MB</p>
+              <img src="view\img\Nueva carpeta\usuarios\default\anonymous.png" alt="" class="img-thumbnail previsualizar" width="100px">
+
+              <input type="hidden" name="imagenActual" id="imagenActual">
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- footer modal -->
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+
+        </div>
+
+      </form>
+      
 
 
     </div>

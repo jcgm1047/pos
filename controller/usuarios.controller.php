@@ -77,6 +77,7 @@ class ControladorUsuarios
             ) {
                 /* validar imagen */
                 $ruta = "";
+                
                 if (isset($_FILES["nuevaFoto"]["tmp_name"])) {
 
                     list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);

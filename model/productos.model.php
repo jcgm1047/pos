@@ -50,4 +50,9 @@ class ModeloProducto
         $stmt = null;
     
     }
+
+
+
+
+    
 }

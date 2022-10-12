@@ -49,7 +49,6 @@ class TablaProductos
       $datosJson .= '[
       "' . $i + 1 . '",
       "' . $img . '",
-
       "' . $productos[$i]["codigo"] . '",
       "' . $productos[$i]["descripcion"] . '",
       "' . $categorias["categoria"] . '",

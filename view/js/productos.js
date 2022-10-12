@@ -14,10 +14,21 @@
 
 
 $('.tablaProductos').DataTable({
+
+
     ajax: 'ajax/datatable-productos.ajax.php',
     " deferRender ": true,
     " retrieve ": true,
     " processing ": true,
+
+
+
+
+
+
+
+
+
     "language": {
 
         "sProcessing": "Procesando...",
@@ -126,4 +137,133 @@ $(".porcentaje").on("ifUnchecked", function() {
 
 $(".porcentaje").on("ifChecked", function() {
     $("#nuevoPrecioVenta").prop("readonly", true);
+})
+
+/* Subiendo la foto del producto */
+
+$(".nuevaImagen").change(function() {
+
+    var imagen = this.files[0];
+
+    /* validamos el formato de la imagen */
+
+
+    if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
+
+        $(".nuevaImagen").val("")
+
+        Swal.fire({
+
+            icon: 'error',
+            title: 'La imagen debe estar en formato JPG o PNG',
+            showConfirmButton: true,
+            confirmButtonText: 'Cerrar',
+
+        })
+
+
+    } else if (imagen["size"] > 2000000) {
+
+        $(".nuevaImagen").val("")
+
+        Swal.fire({
+
+            icon: 'error',
+            title: 'La imagen debe tener un tamaño menor a 2Mb',
+            showConfirmButton: true,
+            confirmButtonText: 'Cerrar',
+
+        })
+
+    } else {
+
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
+
+        $(datosImagen).on("load", function(event) {
+
+                var rutaImagen = event.target.result;
+
+                $(".previsualizar").attr("src", rutaImagen)
+            }
+
+        )
+    }
+
+
+})
+
+
+/* Editar producto */
+
+
+$(".tablaProductos tbody").on("click", "button.btnEditarProducto", function() {
+
+    var idProducto = $(this).attr("idProducto");
+
+    var datos = new FormData();
+    datos.append("idProducto", idProducto);
+
+    $.ajax({
+
+        url: "ajax/productos.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+
+            var datosCategoria = new FormData();
+            datosCategoria.append("idCategoria", respuesta["id_categoria"]);
+
+            $.ajax({
+                url: "ajax/categorias.ajax.php",
+                method: "POST",
+                data: datosCategoria,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(respuesta) {
+
+                    $("#editarCategoria").val(respuesta["id"]);
+                    $("#editarCategoria").html(respuesta["categoria"]);
+
+                }
+
+            });
+
+            $("#editarCodigo").val(respuesta["codigo"]);
+
+            $("#editarDescripcion").val(respuesta["descripcion"]);
+
+            $("#editarStock").val(respuesta["stock"]);
+
+            $("#editarPrecioCompra").val(respuesta["precio_compra"]);
+
+            $("#editarPrecioVenta").val(respuesta["precio_venta"]);
+
+            if (respuesta["imagen"] != "") {
+
+                $("#imagenActual").val(respuesta["imagen"]);
+                $(".previsualizar").attr("src", respuesta["imagen"]);
+
+
+
+            }
+
+
+
+
+
+
+
+
+        }
+    });
+
+
+
 })
