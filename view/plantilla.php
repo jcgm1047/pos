@@ -19,7 +19,7 @@ session_start();
   <!-- ========== Start Plugins CSS ========== -->
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="view/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="view/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="view/bower_components/Ionicons/css/ionicons.min.css">
@@ -52,6 +52,10 @@ session_start();
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- iCheck 1.0.1 -->
   <script src="view/plugins/iCheck/icheck.min.js"></script>
+  <!-- InputMask -->
+  <script src="view/plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="view/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="view/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
   <!-- ========== End plugins JS ========== -->
 

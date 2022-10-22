@@ -358,7 +358,7 @@
 
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
 
-                  <input class="form-control input-lg" type="number" name="editarPrecioVenta" id="editarPrecioVenta" min="0" required>
+                  <input class="form-control input-lg" type="number" name="editarPrecioVenta" id="editarPrecioVenta" min="0" readonly required>
 
                 </div>
 
@@ -420,7 +420,14 @@
         </div>
 
       </form>
-      
+
+      <?php
+
+      $editarProducto = new ControladorProductos();
+      $editarProducto->ctrEditarProducto();
+
+
+      ?>
 
 
     </div>
@@ -428,3 +435,9 @@
   </div>
 
 </div>
+<?php
+
+$eliminarProducto = new ControladorProductos();
+$eliminarProducto->ctrEliminarProducto();
+
+?>

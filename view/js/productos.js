@@ -96,7 +96,7 @@ $("#nuevoCategoria").change(function() {
 
 /* Agregando precio de venta */
 
-$("#nuevoPrecioCompra").change(function() {
+$("#nuevoPrecioCompra ,#editarPrecioCompra").change(function() {
 
         if ($(".porcentaje").prop("checked")) {
 
@@ -104,9 +104,13 @@ $("#nuevoPrecioCompra").change(function() {
 
 
             var porcentaje = Number(($("#nuevoPrecioCompra").val() * valorPorcentaje / 100)) + Number($("#nuevoPrecioCompra").val());
+            var editarporcentaje = Number(($("#editarPrecioCompra").val() * valorPorcentaje / 100)) + Number($("#editarPrecioCompra").val());
 
             $("#nuevoPrecioVenta").val(porcentaje);
             $("#nuevoPrecioVenta").prop("readonly", true);
+
+            $("#editarPrecioVenta").val(editarporcentaje);
+            $("#editarPrecioVenta").prop("readonly", true);
 
 
 
@@ -118,13 +122,19 @@ $(".nuevoPorcentaje").change(function() {
 
     if ($(".porcentaje").prop("checked")) {
 
-        var valorPorcentaje = $(".nuevoPorcentaje").val();
+        var valorPorcentaje = $(this).val();
+
+
 
 
         var porcentaje = Number(($("#nuevoPrecioCompra").val() * valorPorcentaje / 100)) + Number($("#nuevoPrecioCompra").val());
+        var editarporcentaje = Number(($("#editarPrecioCompra").val() * valorPorcentaje / 100)) + Number($("#editarPrecioCompra").val());
 
         $("#nuevoPrecioVenta").val(porcentaje);
         $("#nuevoPrecioVenta").prop("readonly", true);
+
+        $("#editarPrecioVenta").val(editarporcentaje);
+        $("#editarPrecioVenta").prop("readonly", true);
 
     }
 
@@ -133,10 +143,14 @@ $(".nuevoPorcentaje").change(function() {
 $(".porcentaje").on("ifUnchecked", function() {
 
     $("#nuevoPrecioVenta").prop("readonly", false);
+    $("#editarPrecioVenta").prop("readonly", false);
 })
 
 $(".porcentaje").on("ifChecked", function() {
+
     $("#nuevoPrecioVenta").prop("readonly", true);
+    $("#editarPrecioVenta").prop("readonly", true);
+
 })
 
 /* Subiendo la foto del producto */
@@ -250,20 +264,42 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function() {
                 $("#imagenActual").val(respuesta["imagen"]);
                 $(".previsualizar").attr("src", respuesta["imagen"]);
 
-
-
             }
-
-
-
-
-
-
-
 
         }
     });
 
 
 
+})
+
+
+/* Editar producto */
+
+
+$(".tablaProductos tbody").on("click", "button.btnEliminarProducto", function() {
+
+    var idProducto = $(this).attr("idProducto");
+    var codigo = $(this).attr("codigo");
+    var imagen = $(this).attr("imagen");
+
+    swal.fire({
+
+        title: 'Estas seguro de borrar este producto?',
+        text: "Si no lo está puede cancelar la accion",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Nooo, Espera!',
+        confirmButtonText: 'Si, Borralo!'
+
+    }).then((result) => {
+        if (result.value) {
+
+            window.location = 'index.php?ruta=productos&idProducto=' + idProducto + '&imagen=' + imagen + '&codigo=' + codigo;
+
+
+        }
+    })
 })
