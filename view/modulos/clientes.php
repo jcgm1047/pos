@@ -72,9 +72,9 @@
                     <td>0000-00-00 00:00:00</td>
                     <td>
                       <div class="btn-group">
-                        <button class="btn btn-warning btnEditarCliente" id = "' . $value["id"] . '" data-toggle = "modal" data-target="#modalEditarCliente"> <i class="fa fa-pencil"></i> </button>
+                        <button class="btn btn-warning btnEditarCliente" data-toggle = "modal" data-target="#modalEditarCliente"  idCliente = "' . $value["id"] . '"> <i class="fa fa-pencil"></i> </button>
                         
-                        <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                        <button class="btn btn-danger btnEliminarCliente" idCliente = "' . $value["id"] . '"> <i class="fa fa-times"></i> </button>
                       </div>
                     </td>
             </tr>';
@@ -264,6 +264,8 @@
 
                 <input class="form-control input-lg" type="text" name="editarCliente" id="editarCliente" required>
 
+                <input type="hidden" name="idCliente" id="idCliente">
+
               </div>
 
             </div>
@@ -290,7 +292,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 
-                <input class="form-control input-lg" type="email" name="editarEmail" id="editarEmail" >
+                <input class="form-control input-lg" type="email" name="editarEmail" id="editarEmail">
               </div>
 
             </div>
@@ -303,7 +305,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
 
-                <input class="form-control input-lg" type="text" name="editarTelefono" id="editarTelefono"  data-inputmask='"mask": "(999) 999-9999"' data-mask required>
+                <input class="form-control input-lg" type="text" name="editarTelefono" id="editarTelefono" data-inputmask='"mask": "(999) 999-9999"' data-mask required>
 
               </div>
 
@@ -315,10 +317,10 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-calendar"></i>
-              </span>
+                <span class="input-group-addon"><i class="fa fa-map-pin"></i>
+                </span>
 
-                <input class="form-control input-lg" type="text" name="editarDireccion" id="editarDireccion"  required>
+                <input class="form-control input-lg" type="text" name="editarDireccion" id="editarDireccion" required>
 
               </div>
 
@@ -330,9 +332,9 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-map-pin"></i></span>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 
-                <input class="form-control input-lg" type="datetime" name="editarFechaNacimiento" id="editarFechaNacimiento"  data-inputmask="'alias': 'yyyy-mm-dd'" data-mask require>
+                <input class="form-control input-lg" type="datetime" name="editarFechaNacimiento" id="editarFechaNacimiento" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask require>
               </div>
 
             </div>
@@ -351,17 +353,17 @@
         </div>
 
       </form>
-
       <?php
-
-    /* pendiente de llamar al controlador para la edicion  */
-
-
-
+      $editarCliente = new ControladorCliente();
+      $editarCliente->ctrEditarCliente();
       ?>
-
     </div>
 
   </div>
 
 </div>
+
+<?php
+$EliminarCliente = new ControladorCliente();
+$EliminarCliente->ctrEliminarCliente();
+?>

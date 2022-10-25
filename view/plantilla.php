@@ -125,6 +125,7 @@ session_start();
   <script src="view/js/usuarios.js"></script>
   <script src="view/js/categorias.js"></script>
   <script src="view/js/productos.js"></script>
+  <script src="view/js/clientes.js"></script>
 
 </body>
 
