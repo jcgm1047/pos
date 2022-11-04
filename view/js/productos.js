@@ -22,13 +22,6 @@ $('.tablaProductos').DataTable({
     " processing ": true,
 
 
-
-
-
-
-
-
-
     "language": {
 
         "sProcessing": "Procesando...",
