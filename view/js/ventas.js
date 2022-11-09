@@ -73,10 +73,7 @@ $(".tablaVentas tbody").on("click", "button.agrearProducto", function () {
         dataType: "json",
 
         success: function (respuesta) {
-       
 
-            
-           
             var descripcion = respuesta["descripcion"];
             var stock = respuesta["stock"];
             var precio = respuesta["precio_venta"];
@@ -91,7 +88,7 @@ $(".tablaVentas tbody").on("click", "button.agrearProducto", function () {
 
                 '<div class="input-group">' +
 
-                '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto="'+idProducto+'"><i class="fa fa-times"></i></button></span>' +
+                '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto="' + idProducto + '"><i class="fa fa-times"></i></button></span>' +
 
                 '<input type="text" class="form-control" id="agregarProducto" name="agregarProducto" value="' + descripcion + '" required readonly>' +
 
@@ -135,14 +132,33 @@ $(".tablaVentas tbody").on("click", "button.agrearProducto", function () {
 
 /* quitar productos a la venta y recuperar botton  */
 
+
+
+
 $(".formularioVenta").on("click", "button.quitarProducto", function () {
 
     $(this).parent().parent().parent().parent().remove();
 
     var idProducto = $(this).attr("idProducto");
 
-    $("button.recuperarBoton[idProducto='"+idProducto+"']").removeClass('btn-default');
-    $("button.recuperarBoton[idProducto='"+idProducto+"']").addClass('btn-primary agrearProducto');
+    /* Almacenar en el localstorage el id del producto a quitar  */
+
+    if (localStorage.getItem("quitarProducto") == null) {
+
+        idQuitarProducto = [];
+    } else {
+
+        idQuitarProducto.concat(localStorage.getItem("quitarproducto"));
+
+    }
+
+    idQuitarProducto.push({ "idProducto": idProducto });
+    localStorage.setItem ("quitarPoducto", JSON.stringify(idQuitarProducto));
+
+
+
+    $("button.recuperarBoton[idProducto='" + idProducto + "']").removeClass('btn-default');
+    $("button.recuperarBoton[idProducto='" + idProducto + "']").addClass('btn-primary agrearProducto');
 
 
 
